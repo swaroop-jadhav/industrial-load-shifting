@@ -1,0 +1,19 @@
+# Data stays out of Git (too large; sources are public and re-downloadable)
+data/raw/*
+data/processed/*
+!data/raw/hipe/
+data/raw/hipe/*
+!**/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+docs/WEEK1_GUIDE.md
