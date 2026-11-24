@@ -1,6 +1,6 @@
 # Industrial Load Shifting: Cutting a Factory's Electricity Costs with 15-Minute Prices
 
-> **Status:** 🚧 In progress — Week 1 of 6 (data collection & exploration)
+> **Status:** 🚧 In progress — Week 2 of 6 (cost baseline)
 
 ## Business problem
 
@@ -22,7 +22,7 @@ savings justify switching to a dynamic (spot-linked) electricity contract.
 |---|---|---|---|
 | [Energy-Charts API](https://api.energy-charts.info/) (Fraunhofer ISE), data from Bundesnetzagentur / SMARD.de | Day-ahead electricity prices, bidding zone DE-LU | 15 min | CC BY 4.0 |
 | [HIPE](https://www.energystatusdata.kit.edu/hipe.php) (KIT Karlsruhe) | Machine-level power of 10 machines + main terminal of a real electronics production plant | ~5 s → resampled to 15 min | CC BY 4.0 |
-| SPARK (KIT Karlsruhe, 2026) — *planned extension* | 22 industrial machines + PV, up to 7 years | 5 s | CC BY 4.0 |
+| [SPARK](https://doi.org/10.35097/bjdg3m3rg5jv3skk) (KIT Karlsruhe, 2026) — **main dataset** | 11 TEC workshop machines (mills, lathes, wire EDM, chillers), 2024 | 5 s → 15 min | CC BY 4.0 |
 
 ## Approach
 
@@ -59,7 +59,8 @@ pip install -r requirements.txt
 
 python src/download_prices.py        # ~6 minutes (API rate limit)
 python src/load_machine_data.py      # after downloading HIPE into data/raw/hipe/
-jupyter lab                          # open notebooks/01_data_exploration.ipynb
+python src/load_spark_data.py        # after downloading SPARK files into data/raw/spark/<machine>/
+jupyter lab                          # notebooks/01_data_exploration.ipynb, 02_cost_baseline.ipynb
 ```
 
 ## Results
@@ -68,4 +69,4 @@ jupyter lab                          # open notebooks/01_data_exploration.ipynb
 
 ---
 *Data attribution: Bundesnetzagentur | SMARD.de via energy-charts.info (Fraunhofer ISE), CC BY 4.0.
-HIPE: Bischof et al., KIT, CC BY 4.0.*
+HIPE: Bischof et al., KIT, CC BY 4.0. SPARK: Sievers, Bischof, Simon, Blank, KIT (2026), CC BY 4.0.*
