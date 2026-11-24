@@ -105,15 +105,20 @@ def split_standby(aligned: pd.DataFrame, machine: str) -> tuple[pd.Series, pd.Se
 # 4. Upper bound: the MOST that shifting within the same day could ever save
 # -----------------------------------------------------------------------------
 def perfect_shift_cost(kwh: np.ndarray, aligned: pd.DataFrame,
-                       window_hours: tuple[int, int] = config.SHIFT_WINDOW_HOURS) -> float:
+                       window_hours: tuple[int, int] = config.SHIFT_WINDOW_HOURS,
+                       plan_price: np.ndarray | None = None) -> float:
     """
     For every day, take the (production) energy and place it into the cheapest quarter-hours of that
     same day - inside the shift window first - never above the highest observed energy per quarter-hour.
     This ignores job order, workers and process limits, so it is a CEILING for savings,
     not a realistic plan (that is Week 4).
+
+    plan_price: prices used to DECIDE where energy goes (e.g. a forecast). The cost is always paid
+    at the ACTUAL price. Without plan_price we assume perfect knowledge of the actual prices.
     """
     kwh = np.asarray(kwh, dtype=float)
     price = aligned["price_eur_mwh"].to_numpy()
+    rank = price if plan_price is None else np.asarray(plan_price, dtype=float)
     local = aligned["timestamp_local"]
     cap = kwh.max()                                     # max energy per quarter-hour (= peak kW x 0.25)
     if cap <= 0:
@@ -127,7 +132,7 @@ def perfect_shift_cost(kwh: np.ndarray, aligned: pd.DataFrame,
         energy = kwh[idx].sum()
         if energy <= 0:
             continue
-        order = idx[np.lexsort((price[idx], ~in_window[idx]))]   # window first, then cheapest
+        order = idx[np.lexsort((rank[idx], ~in_window[idx]))]    # window first, then cheapest (as planned)
         full_slots = int(energy // cap)
         total += cap * price[order[:full_slots]].sum()
         rest = energy - full_slots * cap

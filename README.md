@@ -1,6 +1,6 @@
 # Industrial Load Shifting: Cutting a Factory's Electricity Costs with 15-Minute Prices
 
-> **Status:** 🚧 In progress — Week 2 of 6 (cost baseline)
+> **Status:** 🚧 In progress — Week 3 of 6 (price forecast)
 
 ## Business problem
 
@@ -60,7 +60,7 @@ pip install -r requirements.txt
 python src/download_prices.py        # ~6 minutes (API rate limit)
 python src/load_machine_data.py      # after downloading HIPE into data/raw/hipe/
 python src/load_spark_data.py        # after downloading SPARK files into data/raw/spark/<machine>/
-jupyter lab                          # notebooks/01_data_exploration.ipynb, 02_cost_baseline.ipynb
+jupyter lab                          # notebooks 01_data_exploration, 02_cost_baseline, 03_price_forecast
 ```
 
 ## Results

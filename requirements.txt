@@ -4,8 +4,8 @@ requests>=2.31
 matplotlib>=3.8
 pyarrow>=15.0
 jupyterlab>=4.0
+lightgbm>=4.0
+holidays>=0.50
 # Later weeks:
-# scikit-learn>=1.4
-# lightgbm>=4.0
 # pulp>=2.8
 # streamlit>=1.35
