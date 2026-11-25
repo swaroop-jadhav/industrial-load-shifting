@@ -1,6 +1,6 @@
 # Industrial Load Shifting: Cutting a Factory's Electricity Costs with 15-Minute Prices
 
-> **Status:** 🚧 In progress — Week 3 of 6 (price forecast)
+> **Status:** 🚧 In progress — Week 4 of 6 (realistic action plan)
 
 ## Business problem
 
@@ -29,7 +29,7 @@ savings justify switching to a dynamic (spot-linked) electricity contract.
 1. **Explore** machine load profiles and 15-minute price patterns *(Week 1)*
 2. **Cost baseline:** what does the current schedule cost at 15-minute prices? *(Week 2)*
 3. **Price forecast** 2–7 days ahead for production planning *(Week 3)*
-4. **Optimise** flexible loads under production constraints (linear programming) *(Week 4)*
+4. **Realistic action plan:** what the workshop can actually do (standby off, shift timing) *(Week 4)*
 5. **Business case:** annual € and CO₂ savings, dashboard, management summary *(Weeks 5–6)*
 
 ## Key assumptions
@@ -60,7 +60,7 @@ pip install -r requirements.txt
 python src/download_prices.py        # ~6 minutes (API rate limit)
 python src/load_machine_data.py      # after downloading HIPE into data/raw/hipe/
 python src/load_spark_data.py        # after downloading SPARK files into data/raw/spark/<machine>/
-jupyter lab                          # notebooks 01_data_exploration, 02_cost_baseline, 03_price_forecast
+jupyter lab                          # notebooks 01 to 04, in order
 ```
 
 ## Results
