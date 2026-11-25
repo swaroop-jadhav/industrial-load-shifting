@@ -1,0 +1,12 @@
+machine,machine_id,type,energy_mwh,cost_eur,price_paid_eur_mwh,standby_kw,standby_mwh,standby_cost_eur,production_mwh,upper_bound_saving_eur,standby_off_saving_eur,co2_t
+DNG 50 evo (mill),TEC_DNG50evo,cycling,42.1461,4405.4139,104.5273,4.1141,35.6372,3721.4067,6.5088,226.2996,2176.0481,14.7584
+JWA 24 (liquid cooler),TEC_JWA24,cycling,19.0668,2013.1339,105.5831,2.1239,11.9503,1278.6279,7.1165,391.6051,741.8532,6.2547
+MV 2400 R (wire EDM),TEC_MV2400R,continuous,11.4407,1253.9883,109.6075,0.0,0.0,0.0,11.4407,488.8309,0.0,3.9212
+CF ST 161 (water chiller),TEC_CFST161,cycling,9.3801,939.3318,100.141,0.08,0.6929,72.1223,8.6871,130.6458,42.3545,3.2529
+DMU 125 (5-axis mill),TEC_DMU125MB,shift-bound,6.2484,668.9135,107.0535,0.0,0.0,0.0,6.2484,321.2887,0.0,2.099
+Chiron 800 (5-axis mill),TEC_Chiron800,shift-bound,5.9816,649.407,108.5673,0.0,0.0,0.0,5.9816,317.9757,0.0,2.069
+CTX 800 TC (lathe-mill),TEC_CTX800TC,shift-bound,2.6323,291.3836,110.694,0.0,0.0,0.0,2.6323,102.4343,0.0,0.9182
+E110 (lathe),TEC_E110,shift-bound,2.3967,227.8772,95.0794,0.0,0.0,0.0,2.3967,131.4183,0.0,0.711
+E30 D2 (lathe),TEC_E30D2,shift-bound,0.6082,64.8683,106.6613,0.0,0.0,0.0,0.6082,30.9067,0.0,0.2002
+DMF 300/8 (5-axis mill),TEC_DMF3008,shift-bound,0.3221,34.1935,106.1695,0.0,0.0,0.0,0.3221,9.6992,0.0,0.1156
+48S (lathe),TEC_48S,cycling,0.2199,24.0139,109.1997,0.0,0.0,0.0,0.2199,6.1189,0.0,0.0801

@@ -1,0 +1,5 @@
+model,MAE,RMSE,rank_corr,captured_pct_7_days_ahead
+LightGBM,38.8038,54.981,0.8608,92.2527
+Naive: last known day,43.8418,66.9128,0.843,94.3811
+Naive: same day last week,42.5956,65.6835,0.8693,93.9709
+Naive: 7-day average,37.883,55.5919,0.8977,96.3952

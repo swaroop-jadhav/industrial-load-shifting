@@ -1,0 +1,5 @@
+lever,saving_eur,co2_saved_t,status,effort,check_first
+1. Standby off outside working hours,2960.2558,10.4644,recommended,low,"why machines stay on (warm-up, accuracy)"
+2. Summer schedule: Apr-Sep shift +4 h,337.4473,0.8339,recommended,medium,"working-time rules, workers' preferences"
+3. Weekly shift plan with forecast,364.6282,0.9046,alternative to 2,high,changing hours every week
+Upper bound: free same-day shifting (theory),2157.2233,,theoretical,-,-

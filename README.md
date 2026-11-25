@@ -1,6 +1,6 @@
 # Industrial Load Shifting: Cutting a Factory's Electricity Costs with 15-Minute Prices
 
-> **Status:** 🚧 In progress — Week 4 of 6 (realistic action plan)
+> **Status:** 🚧 In progress — Week 5 of 6 (CO₂ view and dashboards)
 
 ## Business problem
 
@@ -60,7 +60,9 @@ pip install -r requirements.txt
 python src/download_prices.py        # ~6 minutes (API rate limit)
 python src/load_machine_data.py      # after downloading HIPE into data/raw/hipe/
 python src/load_spark_data.py        # after downloading SPARK files into data/raw/spark/<machine>/
-jupyter lab                          # notebooks 01 to 04, in order
+python src/download_generation.py    # ~6 minutes, generation mix for CO₂
+jupyter lab                          # notebooks 01 to 05, in order (05 writes dashboard/data)
+streamlit run dashboard/app.py       # interactive dashboard
 ```
 
 ## Results

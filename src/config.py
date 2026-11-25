@@ -14,6 +14,8 @@ PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 FIGURES_DIR = PROJECT_ROOT / "reports" / "figures"
 
 PRICES_RAW_FILE = RAW_DIR / "day_ahead_prices_de_lu.csv"
+GENERATION_FILE = RAW_DIR / "generation_mix_de.csv"          # Week 5: for CO2 intensity
+DASHBOARD_DATA_DIR = PROJECT_ROOT / "dashboard" / "data"        # small result tables for Streamlit / Power BI
 MACHINE_LOAD_FILE = PROCESSED_DIR / "machine_load_15min.csv"
 
 # --- Electricity prices ------------------------------------------------------

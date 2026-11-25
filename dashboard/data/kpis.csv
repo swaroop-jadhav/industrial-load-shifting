@@ -1,0 +1,2 @@
+baseline_cost_eur,energy_mwh,price_paid_eur_mwh,market_avg_eur_mwh,standby_share_pct,standby_cost_eur,upper_bound_shift_eur,lever1_standby_off_eur,lever2_summer_shift_eur,lever3_weekly_plan_eur,recommended_saving_eur,recommended_saving_pct,baseline_co2_t,recommended_co2_saved_t,recommended_co2_saved_pct,grid_co2_avg_g_kwh
+10572.5251,100.4429,105.2591,104.045,48.0676,5072.157,2157.2233,2960.2558,337.4473,364.6282,3297.7031,31.1913,34.3803,11.2983,32.8626,352.6235

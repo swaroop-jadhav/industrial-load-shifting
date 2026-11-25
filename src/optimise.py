@@ -165,12 +165,13 @@ def perfect_weekly_offsets(energy: pd.DataFrame, price: pd.DataFrame, options=ra
 # -----------------------------------------------------------------------------
 # 4. Lever 1: switch standby off outside working hours
 # -----------------------------------------------------------------------------
-def standby_off_saving(aligned: pd.DataFrame, machine: str,
-                       keep_on_hours: tuple[int, int] = (3, 17),
-                       shift_offsets: pd.Series | None = None) -> dict:
+def standby_removed_kwh(aligned: pd.DataFrame, machine: str,
+                        keep_on_hours: tuple[int, int] = (3, 17),
+                        shift_offsets: pd.Series | None = None) -> pd.Series:
     """
-    Standby stays ON on weekdays between keep_on_hours (1 h warm-up before the earliest shift start
-    at 04:00, buffer after the shift); outside that it is switched OFF. Returns energy and € saved.
+    Standby energy (kWh per quarter-hour) that is saved when standby is switched OFF outside the
+    keep-on window. Standby stays ON on weekdays between keep_on_hours (1 h warm-up before the
+    earliest shift start at 04:00, buffer after the shift).
     shift_offsets (hours per date): if the shift moves later, the keep-on window moves with it.
     """
     standby, _ = cost.split_standby(aligned, machine)
@@ -181,7 +182,14 @@ def standby_off_saving(aligned: pd.DataFrame, machine: str,
         move = dates.map(shift_offsets).fillna(0).to_numpy()
     start, end = keep_on_hours[0] + move, keep_on_hours[1] + move
     on = (local.dt.day_of_week < 5) & (local.dt.hour >= start) & (local.dt.hour < end)
-    removed = standby.where(~on, 0.0)
+    return standby.where(~on, 0.0)
+
+
+def standby_off_saving(aligned: pd.DataFrame, machine: str,
+                       keep_on_hours: tuple[int, int] = (3, 17),
+                       shift_offsets: pd.Series | None = None) -> dict:
+    """Energy and € saved by switching standby off outside working hours (see standby_removed_kwh)."""
+    removed = standby_removed_kwh(aligned, machine, keep_on_hours, shift_offsets)
     return {"machine": machine, "standby_kw": cost.standby_kw(aligned, machine),
             "saved_mwh": removed.sum() / 1000,
             "saved_eur": (removed / 1000 * aligned["price_eur_mwh"]).sum()}
