@@ -189,7 +189,7 @@ with st.sidebar:
     st.markdown("### About")
     st.markdown(
         "Portfolio project by **Swaroop Jadhav** (MSc Machine Learning & Data Analytics, HS Aalen).\n\n"
-        "[Code and notebooks on GitHub](https://github.com/swarupjadhav66-jpg/industrial-load-shifting)")
+        "[Code and notebooks on GitHub](https://github.com/swaroop-jadhav/industrial-load-shifting)")
     st.markdown("### Data")
     st.markdown("- Prices: Bundesnetzagentur / SMARD.de via Energy-Charts (Fraunhofer ISE), CC BY 4.0\n"
                 "- Generation mix for CO₂: Energy-Charts (Fraunhofer ISE), CC BY 4.0\n"
