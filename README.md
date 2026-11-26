@@ -28,10 +28,13 @@ electricity prices (Oct 2025 – Sep 2026), and tested what the workshop could r
    money and saving CO₂ point in the same direction.
 4. **A simple forecast beat machine learning.** For planning 2–7 days ahead, a 7-day average (MAE 37.9 €/MWh)
    was as accurate as LightGBM (38.8) and captured 96–98% of the perfect-knowledge saving vs. 92–93%.
+5. **The levers have to be checked together.** A later shift keeps standby machines on into expensive summer
+   evenings, so the total saving is almost flat between +2 h and +4 h (€3,279–3,313). A 2-hour shift gets 99% of it.
 
 **Recommendation for the plant manager:** (1) switch standby off outside working hours, after confirming with the
 operators that the machines don't need to stay warm (€2,960 / year); (2) introduce a summer schedule that starts the
-shift 4 hours later from April to September (€337 / year).
+shift later from April to September (€337 / year with +4 h). Starting with +2 h is the easier first step and gives
+almost the same total.
 
 ## Approach
 
@@ -42,6 +45,7 @@ shift 4 hours later from April to September (€337 / year).
 | 03 | [Price forecast](notebooks/03_price_forecast.ipynb) | Can we plan with prices that are not published yet? | Simple 7-day average beats LightGBM for this decision |
 | 04 | [Action plan](notebooks/04_optimisation.ipynb) | What can the workshop *actually* do? | Standby off + summer schedule: €3,298 / year |
 | 05 | [CO₂ & results](notebooks/05_co2_and_results.ipynb) | Is the plan also good for the climate? | 11.3 t CO₂ saved; cheap hours are clean hours |
+| 06 | [Summer shift sensitivity](notebooks/06_summer_shift_sensitivity.ipynb) | How many hours should the summer shift move? | +2 h gets 99% of the best combined saving |
 
 Every assumption and decision (with alternatives and reasons) is documented in the
 [assumptions & decision log](docs/assumptions_log.md).
@@ -79,7 +83,7 @@ Every assumption and decision (with alternatives and reasons) is documented in t
 ├── dashboard/          # Streamlit app, Power BI report (dashboard/powerbi), result tables (dashboard/data)
 ├── data/               # raw downloads and processed files (not in Git, re-created by the scripts)
 ├── docs/               # assumptions & decision log
-├── notebooks/          # analysis notebooks 01–05
+├── notebooks/          # analysis notebooks 01–06
 ├── reports/figures/    # exported charts
 └── src/                # data pipeline, cost model, forecasting, optimisation, CO₂, results
 ```
@@ -95,7 +99,7 @@ python src/download_prices.py         # 15-minute day-ahead prices (~6 min, API 
 python src/extract_spark_power.py     # after downloading the 11 TEC_*.zip files from the SPARK dataset
 python src/load_spark_data.py
 python src/download_generation.py     # generation mix for CO₂ (~6 min)
-jupyter lab                           # run notebooks 01–05 in order (05 writes dashboard/data)
+jupyter lab                           # run notebooks 01–06 in order (05 writes dashboard/data)
 streamlit run dashboard/app.py
 ```
 
