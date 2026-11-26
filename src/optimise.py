@@ -1,7 +1,7 @@
 """
-Week 4: from the theoretical upper bound to a REALISTIC action plan.
+notebook 04: from the theoretical upper bound to a REALISTIC action plan.
 
-What the data showed (Week 4, part A): the machines do not run as small jobs that can be moved
+What the data showed (notebook 04, part A): the machines do not run as small jobs that can be moved
 freely. They fall into three groups:
   - continuous  : runs for days without stopping (wire EDM)        -> cannot be shifted
   - shift-bound : one long block per working day (mills, lathes)   -> moves only if the SHIFT moves

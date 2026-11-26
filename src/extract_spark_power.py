@@ -5,7 +5,7 @@ Each machine ZIP from RADAR4KIT contains ~125 measurements (voltages, currents, 
 We only need one: the total active power. Unpacking everything would cost many GB of disk space,
 so this script copies just that one file into data/raw/spark/<machine>/.
 
-HOW TO RUN (after downloading the TEC_*.zip files):
+Usage:
     python src/extract_spark_power.py                      # looks in your Downloads folder
     python src/extract_spark_power.py "D:\\some\\folder"    # or in another folder
 Afterwards you can delete the ZIP files.

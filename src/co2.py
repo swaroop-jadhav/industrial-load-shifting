@@ -1,5 +1,5 @@
 """
-CO2 intensity of German grid electricity per quarter-hour (Week 5).
+CO2 intensity of German grid electricity per quarter-hour.
 
 METHOD (assumption A10): generation-based AVERAGE emission factor
     intensity [g CO2-eq/kWh] = sum(generation_source x factor_source) / sum(generation_source)

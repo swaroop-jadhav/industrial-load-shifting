@@ -1,6 +1,6 @@
 """
 Turn the SPARK machine files (5-second active power, one file per machine and year) into one
-clean 15-minute table - the same format as the HIPE table from Week 1.
+clean 15-minute table - the same format as the HIPE table from notebook 01.
 
 EXPECTED FILES (one folder per machine, as in the original dataset):
     data/raw/spark/TEC_Chiron800/2024_P_total.csv.xz
@@ -8,7 +8,7 @@ EXPECTED FILES (one folder per machine, as in the original dataset):
     ...
     (a deeper layout like TEC_Chiron800/P_total/2024_P_total.csv.xz also works)
 
-WHAT THIS SCRIPT DOES
+Steps:
 1. Finds every *P_total*.csv.xz file and reads the machine name from its folder.
 2. Reads the file (pandas unpacks .xz by itself), converts W -> kW.
 3. Converts the German local timestamps (CET/CEST) to UTC, handling the clock changes.
@@ -17,7 +17,7 @@ WHAT THIS SCRIPT DOES
 6. Saves data/processed/spark_load_15min.csv
    columns: timestamp_utc | machine | avg_kw | energy_kwh | coverage
 
-HOW TO RUN:
+Usage:
     python src/load_spark_data.py
 """
 from __future__ import annotations

@@ -1,14 +1,14 @@
 """
 Download German day-ahead electricity prices (15-minute) from the Energy-Charts API.
 
-WHAT THIS SCRIPT DOES
+Steps:
 1. Splits the period (see config.py) into monthly chunks.
 2. Asks the API for each month's prices (the API allows only ~2 requests per minute,
    so the script waits between requests -> the full year takes about 6 minutes).
 3. Combines all months, removes duplicates, checks data quality.
 4. Saves one clean CSV: data/raw/day_ahead_prices_de_lu.csv
 
-HOW TO RUN (from the project folder):
+Usage:
     python src/download_prices.py
 
 Data source: Bundesnetzagentur | SMARD.de via api.energy-charts.info (Fraunhofer ISE), CC BY 4.0.
@@ -104,7 +104,7 @@ def download_all() -> pd.DataFrame:
 
 
 # -----------------------------------------------------------------------------
-# 3. Clean and check (never trust a download without checking it!)
+# 3. Clean and validate
 # -----------------------------------------------------------------------------
 def clean_and_validate(prices: pd.DataFrame) -> pd.DataFrame:
     unit = prices.attrs.get("unit")

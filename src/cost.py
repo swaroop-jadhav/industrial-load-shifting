@@ -1,7 +1,7 @@
 """
-Reusable cost calculations (Week 2 baseline, reused in Week 4 optimisation).
+Reusable cost calculations (notebook 02 baseline, reused in notebook 04 optimisation).
 
-THE IDEA
+Approach:
 The machine data is from 2024, the prices from Oct 2025 - Sep 2026. To "replay" the machines
 against today's prices we match every price quarter-hour with the machine load from the
 SAME week of the year, SAME weekday and SAME time of day in 2024 (assumption A5).
@@ -111,7 +111,7 @@ def perfect_shift_cost(kwh: np.ndarray, aligned: pd.DataFrame,
     For every day, take the (production) energy and place it into the cheapest quarter-hours of that
     same day - inside the shift window first - never above the highest observed energy per quarter-hour.
     This ignores job order, workers and process limits, so it is a CEILING for savings,
-    not a realistic plan (that is Week 4).
+    not a realistic plan (that is notebook 04).
 
     plan_price: prices used to DECIDE where energy goes (e.g. a forecast). The cost is always paid
     at the ACTUAL price. Without plan_price we assume perfect knowledge of the actual prices.

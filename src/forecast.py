@@ -1,14 +1,13 @@
 """
-Day-ahead price forecasting for production planning (Week 3).
+Day-ahead price forecasting for production planning.
 
-THE PLANNING SITUATION (decision D11)
+Planning setup (decision D11):
 Every day around noon the exchange publishes the prices for TOMORROW. A planner who makes the
 production plan on day D therefore knows all prices up to day D+1, and needs a FORECAST for
 days D+2 ... D+7 (horizon h = 2 ... 7 days).
 
-GOLDEN RULE: every feature must be known at planning time. If we used information from after
-the planning day (for example yesterday's price of the target day), the model would look great
-in testing and fail in reality. This is called "data leakage".
+All features must be available on the planning day. Anything from later (e.g. the price of the
+day before the target day) would be data leakage: good test scores, useless in practice.
 """
 from __future__ import annotations
 
@@ -165,7 +164,7 @@ def decision_value(results: pd.DataFrame, aligned: pd.DataFrame, horizon: int,
                    models: list[str] | None = None) -> pd.DataFrame:
     """
     Plan every machine's PRODUCTION energy with each model's forecast (same-day shifting as in the
-    Week 2 upper bound), but pay the ACTUAL prices. Compare with no shifting and with perfect knowledge.
+    notebook 02 upper bound), but pay the ACTUAL prices. Compare with no shifting and with perfect knowledge.
     'captured_%' = share of the perfect-knowledge saving that the forecast achieves in reality.
     """
     import cost                                                   # local import avoids a cycle
@@ -181,7 +180,7 @@ def decision_value(results: pd.DataFrame, aligned: pd.DataFrame, horizon: int,
 
     rows = {"No shifting": 0.0, "Perfect knowledge": 0.0, **{m: 0.0 for m in models}}
     for machine in aligned.attrs["machines"]:
-        standby = cost.standby_kw(aligned, machine) / 4              # same split as Week 2 (full year)
+        standby = cost.standby_kw(aligned, machine) / 4              # same split as notebook 02 (full year)
         production = (sub[machine] - sub[machine].clip(upper=standby)).to_numpy()
         rows["No shifting"] += (production / 1000 * sub["price_eur_mwh"]).sum()
         rows["Perfect knowledge"] += cost.perfect_shift_cost(production, sub)

@@ -1,16 +1,16 @@
 """
 Turn the raw HIPE machine files (~5-second readings) into one clean 15-minute table.
 
-WHAT THIS SCRIPT DOES
+Steps:
 1. Finds every machine CSV in data/raw/hipe/
 2. Reads ONLY the two columns we need (timestamp + total active power) - the files have
-   100-360 columns and are huge, so reading everything would crash a laptop.
+   100-360 columns and are large, so only the needed columns are read.
 3. Converts power to kW and averages it per 15 minutes (same resolution as prices).
 4. Calculates energy: kWh = average kW x 0.25 hours.
 5. Saves one long table: data/processed/machine_load_15min.csv
    columns: timestamp_utc | machine | avg_kw | energy_kwh | sample_count
 
-HOW TO RUN (after unzipping HIPE into data/raw/hipe/):
+Usage:
     python src/load_machine_data.py
 """
 from __future__ import annotations

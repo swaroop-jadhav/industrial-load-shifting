@@ -1,5 +1,5 @@
 """
-All final results in small, tidy tables (Week 5).
+All final results in small, tidy tables.
 
 Used by notebook 05 AND by the dashboards (Streamlit and Power BI), so every number shown anywhere
 comes from the same calculation. Run `python src/results.py` to (re)write dashboard/data/*.csv.
@@ -27,12 +27,12 @@ def build_tables(loads: pd.DataFrame, prices: pd.DataFrame, generation: pd.DataF
     ci_matrix = co2.intensity_matrix(intensity)
     price_m = fc.price_matrix(prices)
 
-    # ---------------- baseline, standby, upper bound (Week 2) ----------------
+    # ---------------- baseline, standby, upper bound ----------------
     base = cost.baseline_cost(aligned)
     bound = cost.savings_upper_bound(aligned)
     market_avg = aligned["price_eur_mwh"].mean()
 
-    # ---------------- levers (Week 4) ----------------
+    # ---------------- levers ----------------
     classes = op.classify_machines(aligned)
     movable = classes.index[classes["type"] != "continuous"].tolist()
     energy = op.production_matrix(aligned, movable)
@@ -144,7 +144,7 @@ def build_tables(loads: pd.DataFrame, prices: pd.DataFrame, generation: pd.DataF
     tables = {"kpis": kpis, "levers": levers, "machines": machine_table, "hourly_profile": hourly,
               "monthly": monthly, "weekly_rhythm": rhythm, "shift_heatmap": shift_heatmap}
 
-    # ---------------- forecast comparison (Week 3) ----------------
+    # ---------------- forecast comparison ----------------
     if with_forecast:
         data = fc.build_dataset(prices)
         results, _ = fc.rolling_backtest(data, [f"2026-{m:02d}" for m in range(3, 10)])

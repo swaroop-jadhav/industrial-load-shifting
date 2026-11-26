@@ -1,8 +1,8 @@
 """
 Central settings for the project.
 
-Senior-analyst habit: keep every "magic number" (dates, paths, zone codes) in ONE place.
-If you want to change the analysis period, you change it here, not in five scripts.
+All settings (dates, paths, zone codes) in one place, so the analysis period or a file
+location only has to be changed here.
 """
 from pathlib import Path
 
@@ -14,7 +14,7 @@ PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 FIGURES_DIR = PROJECT_ROOT / "reports" / "figures"
 
 PRICES_RAW_FILE = RAW_DIR / "day_ahead_prices_de_lu.csv"
-GENERATION_FILE = RAW_DIR / "generation_mix_de.csv"          # Week 5: for CO2 intensity
+GENERATION_FILE = RAW_DIR / "generation_mix_de.csv"          # notebook 05: for CO2 intensity
 DASHBOARD_DATA_DIR = PROJECT_ROOT / "dashboard" / "data"        # small result tables for Streamlit / Power BI
 MACHINE_LOAD_FILE = PROCESSED_DIR / "machine_load_15min.csv"
 
@@ -29,7 +29,7 @@ LOCAL_TZ = "Europe/Berlin"
 # --- Machine data ------------------------------------------------------------
 RESAMPLE_RULE = "15min"         # match the price resolution
 
-# --- SPARK (KIT, 2026): the main dataset from Week 2 on (decision D7) ------------
+# --- SPARK (KIT, 2026): the main dataset from notebook 02 on (decision D7) ------------
 SPARK_DIR = RAW_DIR / "spark"
 SPARK_LOAD_FILE = PROCESSED_DIR / "spark_load_15min.csv"
 SPARK_YEAR = 2024
@@ -48,5 +48,5 @@ SPARK_MACHINES = {
     "TEC_MV2400R":   "MV 2400 R (wire EDM)",
 }
 
-# --- Load shifting rules (used for the upper bound in Week 2, optimisation in Week 4)
+# --- Load shifting rules (used for the upper bound in notebook 02, optimisation in notebook 04)
 SHIFT_WINDOW_HOURS = (6, 22)    # jobs may be placed between 06:00 and 22:00 (two shifts)

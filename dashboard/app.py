@@ -1,5 +1,5 @@
 """
-Industrial Load Shifting - dashboard for the plant manager (Week 5).
+Industrial Load Shifting - dashboard for the plant manager.
 
 Run locally (from the project folder):
     streamlit run dashboard/app.py

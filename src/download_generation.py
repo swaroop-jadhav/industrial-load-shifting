@@ -2,14 +2,14 @@
 Download Germany's electricity generation mix (15-minute) from the Energy-Charts API.
 We use it to calculate how much CO2 each kWh from the grid causes at each quarter-hour (co2.py).
 
-WHAT THIS SCRIPT DOES
+Steps:
 1. Splits the price period (config.py) into monthly chunks.
 2. Asks the API for each month's generation per source in MW: lignite, hard coal, gas, wind, solar, ...
    (about 2 requests per minute allowed -> the full year takes about 6 minutes).
 3. Combines the months, removes duplicates, checks completeness.
 4. Saves data/raw/generation_mix_de.csv
 
-HOW TO RUN (from the project folder):
+Usage:
     python src/download_generation.py
 
 Data source: Energy-Charts (Fraunhofer ISE), api.energy-charts.info, CC BY 4.0.
