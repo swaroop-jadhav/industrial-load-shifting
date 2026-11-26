@@ -1,6 +1,7 @@
 # Cutting a CNC Workshop's Electricity Cost with 15-Minute Prices
 
-**🔗 Live dashboard: [industrial-load-shifting.streamlit.app](https://industrial-load-shifting.streamlit.app)**
+**🔗 Live dashboard: [industrial-load-shifting.streamlit.app](https://industrial-load-shifting.streamlit.app)**  
+**📊 Power BI report:** [PDF](dashboard/powerbi/dashboard.pdf) · [.pbix](dashboard/powerbi/industrial_load_shifting.pbix)
 
 Can a German workshop save money by running its machines at cheaper times? I replayed one year of real
 5-second machine data from 11 CNC machines (KIT SPARK dataset) against German 15-minute day-ahead
@@ -75,7 +76,7 @@ Every assumption and decision (with alternatives and reasons) is documented in t
 ## Project structure
 
 ```
-├── dashboard/          # Streamlit app + small result tables (dashboard/data)
+├── dashboard/          # Streamlit app, Power BI report (dashboard/powerbi), result tables (dashboard/data)
 ├── data/               # raw downloads and processed files (not in Git, re-created by the scripts)
 ├── docs/               # assumptions & decision log
 ├── notebooks/          # analysis notebooks 01–05
